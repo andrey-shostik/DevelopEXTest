@@ -6,7 +6,7 @@ module CurrentUser
   end
 
   def current_user
-    User.find_by(token: params[:token])
+    @current_user ||= User.find_by(token: params[:token])
   end
 
   def require_user
