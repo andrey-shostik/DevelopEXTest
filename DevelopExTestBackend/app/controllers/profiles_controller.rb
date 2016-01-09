@@ -1,4 +1,6 @@
 class ProfilesController < ApplicationController
+  before_action :require_user
+
   def show
     render json: current_user
   end
@@ -18,6 +20,6 @@ class ProfilesController < ApplicationController
   private
 
   def profile_params
-    params.require(:profile).permit(:first_name, :last_name, :avatar)
+    params.require(:profile).permit(:first_name, :last_name)
   end
 end

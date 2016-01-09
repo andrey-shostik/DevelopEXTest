@@ -1,8 +1,10 @@
 class ProjectsController < ApplicationController
+  before_action :require_user
+
   def index
     render json: current_user.projects,
            serializer: ActiveModel::ArraySerializer,
-           each_serializer: ProjectSerializer
+           each_serializer: ProjectSerializer, root: false
   end
 
   def show
@@ -37,6 +39,6 @@ class ProjectsController < ApplicationController
   end
 
   def project_params
-    params.require(:project).permit(:name, :description, :avatar)
+    params.require(:project).permit(:name, :description)
   end
 end

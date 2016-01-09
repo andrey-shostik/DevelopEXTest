@@ -1,4 +1,6 @@
 class TasksController < ApplicationController
+  before_action :require_user
+
   def index
     render json: project, serializer: ProjectWithTasksSerializer
   end

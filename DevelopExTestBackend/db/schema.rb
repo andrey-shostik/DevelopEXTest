@@ -20,7 +20,6 @@ ActiveRecord::Schema.define(version: 20160108194525) do
     t.integer  "user_id"
     t.string   "name"
     t.string   "description"
-    t.string   "avatar"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
@@ -29,7 +28,7 @@ ActiveRecord::Schema.define(version: 20160108194525) do
 
   create_table "tasks", force: :cascade do |t|
     t.integer  "project_id"
-    t.integer  "priority"
+    t.integer  "priority",    default: 1
     t.boolean  "done",        default: false
     t.string   "title"
     t.string   "description"
@@ -45,7 +44,6 @@ ActiveRecord::Schema.define(version: 20160108194525) do
     t.string   "password_digest"
     t.string   "first_name"
     t.string   "last_name"
-    t.string   "avatar"
     t.string   "token"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false

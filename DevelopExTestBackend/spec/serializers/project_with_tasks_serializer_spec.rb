@@ -10,7 +10,6 @@ RSpec.describe ProjectWithTasksSerializer do
     it { is_expected.to include :id }
     it { is_expected.to include :name }
     it { is_expected.to include :description }
-    it { is_expected.to include :avatar }
   end
 
   describe 'inner' do

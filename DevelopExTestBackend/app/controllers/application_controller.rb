@@ -1,3 +1,3 @@
 class ApplicationController < ActionController::API
-  include CurrentUser, ActionController::Serialization
+  include CurrentUser, HasCors, ActionController::Serialization
 end

@@ -44,13 +44,6 @@ GEM
     bullet (4.14.10)
       activesupport (>= 3.0.0)
       uniform_notifier (~> 1.9.0)
-    carrierwave (0.10.0)
-      activemodel (>= 3.2.0)
-      activesupport (>= 3.2.0)
-      json (>= 1.7)
-      mime-types (>= 1.16)
-    carrierwave-base64 (2.1.1)
-      carrierwave (>= 0.8.0, < 0.11.0)
     coderay (1.1.0)
     concurrent-ruby (1.0.0)
     diff-lcs (1.2.5)
@@ -163,8 +156,6 @@ DEPENDENCIES
   active_model_serializers
   bcrypt (~> 3.1.7)
   bullet
-  carrierwave
-  carrierwave-base64
   factory_girl_rails
   faker
   has_secure_token

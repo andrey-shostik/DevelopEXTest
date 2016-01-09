@@ -9,6 +9,6 @@ RSpec.describe UserSerializer do
   it { is_expected.to include :email }
   it { is_expected.to include :first_name }
   it { is_expected.to include :last_name }
-  it { is_expected.to include :avatar }
   it { is_expected.to include :token }
+  it { is_expected.to include :name }
 end
