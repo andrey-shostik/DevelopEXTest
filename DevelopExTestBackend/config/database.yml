@@ -1,0 +1,14 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  username: denis
+  password: password
+  pool: 5
+
+development:
+  <<: *default
+  database: developex_development
+
+test:
+  <<: *default
+  database: developex_test
