@@ -1,20 +1,26 @@
 <div class="container">
-  <form ng-submit='save()'>
+  <form ng-submit='save()' name='taskForm'>
     <div class="form-group">
-      <input type"text" placeholder="Project name" class="form-control" ng-model="task.title" />
+      <label for="title" class="control-label">Title</label>
+      <input type"text" placeholder="Title" class="form-control" ng-model="task.title" name='title' required/>
+      <span class="error-message" ng-show="taskForm.title.$error.required">Title is required</span>
     </div>
 
     <div class="form-group">
-      <textarea placeholder="Project description" class="form-control" ng-model="task.description" />
+      <label for="description" class="control-label">Description</label>
+      <textarea placeholder="Description" name="description" class="form-control" ng-model="task.description" required/>
+      <span class="error-message" ng-show="taskForm.description.$error.required">Title is required</span>
     </div>
 
     <div class="form-group">
-      <select ng-model='task.priority' ng-options='value as value for value in range(1, 5)'></select>
+      <label for="priority" class="control-label">Priority</label>
+      <select ng-model='task.priority' ng-options='value as value for value in range(1, 5)' name="priority"></select>
     </div>
 
     <div class="form-group">
+      <label for="end_date" class="control-label">Deadline date</label>
       <datepicker date-format="yyyy-MM-dd">
-        <input ng-model="task.end_date" type="text" ng-change='update(task)'/>
+        <input ng-model="task.end_date" type="text" ng-change='update(task)' name='end_date'/>
       </datepicker>
     </div>
 

@@ -12,10 +12,10 @@ angular.module('developExTestFrontendApp')
         }
       )
 
-      $scope.delete = function(index, objectId) {
-        Projects.delete({ token: CurrentUser.token(), id: objectId },
+      $scope.delete = function(project) {
+        Projects.delete({ token: CurrentUser.token(), id: project.id },
           function(response) {
-            $scope.projects.splice(index, 1)
+            $scope.projects.splice($scope.projects.indexOf(project), 1);
           },
           function(error) {
 

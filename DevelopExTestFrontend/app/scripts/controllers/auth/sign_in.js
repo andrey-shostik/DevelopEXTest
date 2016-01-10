@@ -6,6 +6,7 @@ angular.module('developExTestFrontendApp')
       $scope.user = {}
 
       $scope.signIn = function() {
+        $scope.error = null;
         Authentication.save({user: $scope.user},
           function(response) {
             $cookies.putObject('_developex_current_user', response)
@@ -13,7 +14,7 @@ angular.module('developExTestFrontendApp')
             $state.transitionTo('home');
           },
           function(errors) {
-
+            $scope.error = 'Invalid email or password';
           }
         )
       }

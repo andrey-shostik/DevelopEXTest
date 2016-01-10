@@ -7,52 +7,62 @@
       </div>
     </div>
 
+
     <div class="col-md-8 col-lg-8 col-xs-12">
-      <div class="col-md-12 col-lg-12 col-xs-12 project-wrap">
-        <div class="col-md-2 col-lg-2 col-xs-2 text-center">
-          Task
-        </div>
-        <div class="col-md-2 col-lg-2 col-xs-5 text-center">
-          Description
-        </div>
-        <div class="col-md-1 col-lg-1 col-xs-1 text-center">
-          Done?
-        </div>
-        <div class="col-md-1 col-lg-1 col-xs-3 text-center">
-          Priority
-        </div>
-        <div class="col-md-3 col-lg-3 col-xs-3 text-center">
-          Deadline date
-        </div>
-        <div class="col-md-3 col-lg-3 col-xs-3">
-          <a ui-sref='tasks_new({id: project.id})'>New task</a>
+      <div ng-hide="tasks.length > 0">
+        <div class='container'>
+          <h3>You don't have any tasks yet. <a ui-sref='tasks_new({id: project.id})'>Create now</a></h3>
         </div>
       </div>
-      <div class="col-md-12 col-lg-12 col-xs-12">
-        <div ng-repeat="task in tasks | orderBy: '-priority'">
+      <div ng-show="tasks.length > 0">
+        <div class="col-md-12 col-lg-12 col-xs-12">
           <div class="col-md-12 col-lg-12 col-xs-12 project-wrap">
-            <div class="col-md-2 col-lg-2 col-xs-2">
-              {{ task.title }}
+            <div class="col-md-2 col-lg-2 col-xs-2 text-center">
+              Task
             </div>
-            <div class="col-md-2 col-lg-2 col-xs-5">
-              {{ task.description }}
+            <div class="col-md-2 col-lg-2 col-xs-5 text-center">
+              Description
             </div>
-            <div class="col-md-1 col-lg-1 col-xs-1">
-              <input type="checkbox" ng-model='task.done' ng-change='update(task)'>
+            <div class="col-md-1 col-lg-1 col-xs-1 text-center">
+              Done?
             </div>
-            <div class="col-md-1 col-lg-1 col-xs-3">
-              <select ng-model='task.priority' ng-change='update(task)' ng-options='value as value for value in range(1, 5)'></select>
+            <div class="col-md-1 col-lg-1 col-xs-3 text-center">
+              Priority
             </div>
-            <div class="col-md-3 col-lg-3 col-xs-3">
-              <datepicker date-format="yyyy-MM-dd">
-                <input ng-model="task.end_date" type="text" ng-change='update(task)'/>
-              </datepicker>
+            <div class="col-md-3 col-lg-3 col-xs-3 text-center">
+              Deadline date
             </div>
             <div class="col-md-3 col-lg-3 col-xs-3">
-              <a ui-sref='/'>
-                <button class="btn btn-primary" ui-sref="tasks_edit({project_id: project.id, id: task.id})"> Edit </button>
-              </a>
-              <button class="btn btn-danger" ng-click='deleteTask(task)'> Destroy </a>
+              <a ui-sref='tasks_new({id: project.id})'>New task</a>
+            </div>
+          </div>
+          <div class="col-md-12 col-lg-12 col-xs-12">
+            <div ng-repeat="task in tasks | orderBy: '-priority'">
+              <div class="col-md-12 col-lg-12 col-xs-12 project-wrap" ng-class="{'done-task': task.done}">
+                <div class="col-md-2 col-lg-2 col-xs-2">
+                  {{ task.title }}
+                </div>
+                <div class="col-md-2 col-lg-2 col-xs-5">
+                  {{ task.description }}
+                </div>
+                <div class="col-md-1 col-lg-1 col-xs-1">
+                  <input type="checkbox" ng-model='task.done' ng-change='update(task)'>
+                </div>
+                <div class="col-md-1 col-lg-1 col-xs-3">
+                  <select ng-model='task.priority' ng-change='update(task)' ng-options='value as value for value in range(1, 5)'></select>
+                </div>
+                <div class="col-md-3 col-lg-3 col-xs-3">
+                  <datepicker date-format="yyyy-MM-dd">
+                    <input ng-model="task.end_date" type="text" ng-change='update(task)'/>
+                  </datepicker>
+                </div>
+                <div class="col-md-3 col-lg-3 col-xs-3">
+                  <a ui-sref='/'>
+                    <button class="btn btn-primary" ui-sref="tasks_edit({project_id: project.id, id: task.id})"> Edit </button>
+                  </a>
+                  <button class="btn btn-danger" ng-click='deleteTask(task)'> Destroy </a>
+                </div>
+              </div>
             </div>
           </div>
         </div>
