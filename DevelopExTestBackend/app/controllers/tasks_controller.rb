@@ -19,7 +19,6 @@ class TasksController < ApplicationController
   end
 
   def update
-    binding.pry
     if task.update(task_params)
       render json: task, status: :accepted
     else

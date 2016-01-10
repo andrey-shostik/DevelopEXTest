@@ -36,6 +36,16 @@ angular.module('developExTestFrontendApp')
           templateUrl: 'views/tasks/all.html',
           controller: 'TasksAllCtrl'
         })
+        .state('tasks_edit', {
+          url: '/projects/:project_id/task/:id/',
+          templateUrl: 'views/tasks/form.html',
+          controller: 'TaskEditCtrl'
+        })
+        .state('tasks_new', {
+          url: '/projects/:id/tasks/new',
+          templateUrl: 'views/tasks/form.html',
+          controller: 'TaskNewCtrl'
+        })
         .state('home', {
           url: '/',
           templateUrl: 'views/projects/all.html',

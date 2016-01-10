@@ -7,11 +7,6 @@ angular.module('developExTestFrontendApp')
         function(response) {
           $scope.project = response;
           $scope.tasks = $scope.project.tasks;
-          angular.forEach($scope.tasks, function(task) {
-            var parts = task.end_date.split("-");
-            task.end_date = new Date(parts[2], parts[1] - 1, parts[0]);
-            console.log(task.end_date);
-          });
         },
         function(errors) {
           $scope.errors = errors;
@@ -29,6 +24,24 @@ angular.module('developExTestFrontendApp')
             console.log('fail');
           }
         );
+      }
+
+      $scope.deleteTask = function(task) {
+        Tasks.delete({token: CurrentUser.token(), project_id: $stateParams.id, id: task.id},
+          function(response) {
+            $scope.tasks.splice($scope.tasks.indexOf(task), 1);
+          },
+          function(errors) {
+          }
+        );
+      };
+
+      $scope.range = function(from, to) {
+        var arr = [];
+        for(var i = from; i <= to; i++) {
+          arr.push(i);
+        }
+        return arr;
       }
     }
   ]);

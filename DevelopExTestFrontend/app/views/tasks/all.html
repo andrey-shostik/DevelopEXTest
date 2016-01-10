@@ -25,11 +25,12 @@
           Deadline date
         </div>
         <div class="col-md-3 col-lg-3 col-xs-3">
+          <a ui-sref='tasks_new({id: project.id})'>New task</a>
         </div>
       </div>
-      <div class="col-md-12 col-lg-12 col-xs-12 project-wrap">
-        <div ng-repeat="task in tasks">
-          <div class="col-md-12 col-lg-12 col-xs-12">
+      <div class="col-md-12 col-lg-12 col-xs-12">
+        <div ng-repeat="task in tasks | orderBy: '-priority'">
+          <div class="col-md-12 col-lg-12 col-xs-12 project-wrap">
             <div class="col-md-2 col-lg-2 col-xs-2">
               {{ task.title }}
             </div>
@@ -40,19 +41,18 @@
               <input type="checkbox" ng-model='task.done' ng-change='update(task)'>
             </div>
             <div class="col-md-1 col-lg-1 col-xs-3">
-              <select ng-model='task.priority' ng-change='update(task)'>
-                <option ng-value="1"> 1 </option>
-              </select>
+              <select ng-model='task.priority' ng-change='update(task)' ng-options='value as value for value in range(1, 5)'></select>
             </div>
             <div class="col-md-3 col-lg-3 col-xs-3">
-              <input type="date" class="form-control" uib-datepicker-popup ng-model="dt" is-open="popup2.opened" min-date="minDate" max-date="maxDate" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" ng-model='task.end_date' ng-change='update(task)'/>
-              <!-- <input type='date' ng-model='task.end_date' ng-change='update(task)'> -->
+              <datepicker date-format="yyyy-MM-dd">
+                <input ng-model="task.end_date" type="text" ng-change='update(task)'/>
+              </datepicker>
             </div>
             <div class="col-md-3 col-lg-3 col-xs-3">
               <a ui-sref='/'>
-                <button class="btn btn-primary" ui-sref="/"> Edit </button>
+                <button class="btn btn-primary" ui-sref="tasks_edit({project_id: project.id, id: task.id})"> Edit </button>
               </a>
-              <button class="btn btn-danger"> Destroy </a>
+              <button class="btn btn-danger" ng-click='deleteTask(task)'> Destroy </a>
             </div>
           </div>
         </div>

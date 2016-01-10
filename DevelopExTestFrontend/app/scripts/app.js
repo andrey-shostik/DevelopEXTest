@@ -7,7 +7,8 @@ angular.module('developExTestFrontendApp',
     'ngResource',
     'ui.router',
     'ngSanitize',
-    'ngTouch'
+    'ngTouch',
+    '720kb.datepicker'
   ]
 )
   .config(['$httpProvider', function($httpProvider) {
