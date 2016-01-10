@@ -4,7 +4,7 @@ angular.module('developExTestFrontendApp')
     function ($scope, $state, Projects, CurrentUser) {
       $scope.project = {}
 
-      $scope.create = function() {
+      $scope.save = function() {
         Projects.save({token: CurrentUser.token(), project: $scope.project},
           function(response) {
             $state.transitionTo('tasks_all', { id: response.id });

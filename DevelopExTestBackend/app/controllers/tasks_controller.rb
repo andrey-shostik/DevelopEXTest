@@ -19,6 +19,7 @@ class TasksController < ApplicationController
   end
 
   def update
+    binding.pry
     if task.update(task_params)
       render json: task, status: :accepted
     else
@@ -33,7 +34,7 @@ class TasksController < ApplicationController
   private
 
   def project
-    current_user.projects.includes(:tasks).find(params[:project_id])
+    current_user.projects.find(params[:project_id])
   end
 
   def task

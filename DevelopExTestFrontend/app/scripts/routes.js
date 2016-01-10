@@ -37,7 +37,9 @@ angular.module('developExTestFrontendApp')
           controller: 'TasksAllCtrl'
         })
         .state('home', {
-          parent: 'projects'
+          url: '/',
+          templateUrl: 'views/projects/all.html',
+          controller: 'ProjectsAllCtrl'
         })
     }
   ]);

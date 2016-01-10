@@ -11,5 +11,16 @@ angular.module('developExTestFrontendApp')
           $scope.errors = errors;
         }
       )
+
+      $scope.delete = function(index, objectId) {
+        Projects.delete({ token: CurrentUser.token(), id: objectId },
+          function(response) {
+            $scope.projects.splice(index, 1)
+          },
+          function(error) {
+
+          }
+        )
+      }
     }
   ]);

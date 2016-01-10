@@ -7,13 +7,19 @@ angular.module('developExTestFrontendApp')
     return $resource('http://localhost:3000/registration');
   }])
   .factory('Projects', ['$resource', function($resource) {
-    return $resource('http://localhost:3000/projects/:id');
+    return $resource('http://localhost:3000/projects/:id', {id: '@id'},
+      {
+        'update': { method: 'PATCH' }
+      });
   }])
   .factory('Tasks', ['$resource', function($resource) {
-    return $resource('http://localhost:3000/projects/:project_id/tasks', {
+    return $resource('http://localhost:3000/projects/:project_id/tasks/:id', {
         project_id: '@project_id',
         id: '@id'
       },
-      { 'query': { isArray: false } }
+      {
+        'query': { isArray: false },
+        'update': { method: 'PATCH' }
+      }
     );
   }])

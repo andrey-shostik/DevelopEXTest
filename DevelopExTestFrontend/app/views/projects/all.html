@@ -1,8 +1,12 @@
 <div class='raw'>
-  <div ng-repeat="project in projects" class='col-md-12 col-xs-12 col-lg-12'>
-    <a ui-sref='tasks_all({id: project.id})'>
-      <h3 class='modal-title'> {{ project.name }} </h3>
-    </a>
-    <p> {{ project.description }} </p>
+  <div ng-repeat="project in projects" class='col-md-4 col-xs-12 col-lg-4'>
+    <div class="project-wrap">
+      <a ui-sref='tasks_all({id: project.id})'>
+        <h3 class='modal-title'> {{ project.name }} </h3>
+      </a>
+      <a ui-sref='projects_edit({id: project.id})'>Edit</a>
+      <a href='javascript:void(0)' ng-click='delete($index, project.id)'>Delete</a>
+      <p> {{ project.description }} </p>
+    </div>
   </div>
 </div>
